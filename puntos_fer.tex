@@ -1,0 +1,554 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{array}
+\usepackage{amssymb}
+%\usepackage{times}
+\usepackage[spanish, activeacute]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{xtab}
+\usepackage{color}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{xltabular}
+\usepackage{fontspec}
+
+\usepackage{colortbl}
+\usepackage{graphics}
+
+\usepackage{cite}
+\usepackage{lscape}
+%\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+
+%% -------------------------------------- Declare the layers
+\pgfdeclarelayer{nodelayer}
+\pgfdeclarelayer{edgelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+%% -------------------------------------- Declare the styles
+\tikzset{newstyle/.style={thick}}
+\tikzset{simple/.style={thick}}
+
+\tikzstyle{new style 0}=[fill={rgb,255: red,228; green,255; blue,165}, draw=black, shape=rectangle, tikzit fill={rgb,255: red,228; green,255; blue,165}, tikzit shape=rectangle, align=center]
+
+% Edge styles
+\tikzstyle{EjeColorFlecha1}=[draw=black, ->,very thick,densely dotted, fill=none, tikzit draw=black]
+\tikzstyle{EjeFlechaColor2}=[draw={rgb,255: red,243; green,14; blue,37}, ->, very thick,fill=none, tikzit draw={rgb,255: red,243; green,14; blue,37}]
+\tikzstyle{EjeFlechaColor3}=[draw={rgb,255: red,191; green,0; blue,64}, ->, tikzit draw={rgb,255: red,191; green,0; blue,64}]
+
+
+\newenvironment{colortext}[1]{\color{#1}}{\ignorespacesafterend}
+\setsansfont{Roboto Condensed}%{TeXGyrePagella}%{Linux Biolinum O}%{Junicode}%{Carlito}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+
+
+
+
+
+\pagestyle{fancyplain}
+
+ \renewcommand{\sectionmark}[1]
+                 {\markright{\thesection\ #1}}
+
+ \newcommand{\coltex}[1]{\textcolor{red}{#1}}
+
+                 
+% \lhead[\fancyplain{}{\bfseries\thepage}]
+%       {\fancyplain{}{\bfseries\rightmark}}
+%
+ \rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+
+
+ \setlength{\headheight}{34.43594pt}
+
+ \lhead[\fancyplain{}{\vspace{-1cm}\includegraphics[scale=.35]{membrete.png}}]{\fancyplain{}{\vspace{-1cm}\includegraphics[scale=.35]{membrete.png}}}
+
+\cfoot{}
+
+
+
+
+
+\hyphenation{de-ri-va-das} \hyphenation{le-bes-gue}
+\hyphenation{e-llas} \hyphenation{o-cu-rrien-do}
+\hyphenation{pro-pie-da-des}\hyphenation{pi-vo-te}
+\hyphenation{dia-go-na-li} \hyphenation{e-cua-cion}
+\hyphenation{a-pro-pia-dos}\hyphenation{ma-te-má-ti-cos}
+\hyphenation{es-tu-dian-te}
+\hyphenation{po-si-ti-vis-mo} \hyphenation{mo-de-li-za}
+
+\hyphenation{gi-co}
+
+
+
+
+
+
+
+\begin{document}
+ 
+
+\section{5.6. REQUISITOS DE INGRESO} 
+
+\textcolor{blue}{REEMPLAZAR LO QUE DICE POR LO SIGUIENTE}
+
+Los requisitos para el ingreso a la carrera de Licenciatura en Matemática son los establecidos
+en el artículo 7o de la Ley de Educación Superior. Los aspirantes deberán haber aprobado
+el nivel de enseñanza secundaria. Excepcionalmente, los mayores de veinticinco años que
+no reúnan esta condición podrán ingresar siempre que demuestren a través de una
+evaluación que establezca nuestra Universidad, que tienen preparación y/o experiencia
+laboral acorde a los estudios que se proponen iniciar, así como conocimientos y actitudes
+para cursarlos satisfactoriamente.
+
+Los aspirantes deberán además cumplir con las exigencias
+ que establezcan las normativas específicas de la UNRC y de la FCEFQyN    vigentes en el momento 
+ de la inscripción. 
+
+ 
+\section{INGLÉS }
+
+\textcolor{blue}{PONER ESTOS CONTENIDOS Y CORREGIR EN TODOS LOS LADOS QUE APAREZCA }
+
+
+Inglés Intermedio (56 h)
+
+ 
+
+Contenidos mínimos: Géneros discursivos y sus situaciones de contexto, la intencionalidad del autor y la función social del texto: boletines informativos y artículos de semi-divulgación. Léxico específico de la disciplina, estructuras léxico-gramaticales simples y complejas (densidad lexical y sintáctica). Variedad de registros, argumentación y posicionamiento del autor. Marcadores discursivos de ideas principales y secundarias.
+
+ 
+
+Fundamentación: Se trabaja con contenidos disciplinares y lingüísticos que puedan ser transferidos a las actividades de aprendizaje que se desarrollan en las demás asignaturas que conforman el Plan de Estudio y que apoyan el desarrollo integral del estudiante.
+
+ 
+
+Carga Horaria semanal Total: 2 h  \textbf{(ESTÁ BIEN?)}
+
+Carga Horaria Total: 56 h
+
+Régimen de cursado: Anual
+
+Modalidad de enseñanza y de aprendizaje: Clases Teóricas Prácticas (56 h)
+
+ 
+
+Inglés Avanzado (56 h)
+
+ 
+
+Contenidos mínimos: Géneros discursivos y sus situaciones de contexto, la intencionalidad del autor y la función social del texto: el artículo de revisión bibliográfica, el artículo de investigación, el resumen, (y el estudio de caso). Léxico específico de la disciplina, estructuras léxico-gramaticales complejas a nivel lingüístico y conceptual. Representaciones multimediales de contenidos conceptuales de la disciplina y su evaluación crítica.
+
+
+Fundamentación: Se trabaja con contenidos disciplinares y lingüísticos que puedan ser transferidos a las actividades de aprendizaje que se desarrollan en las demás asignaturas que conforman el Plan de Estudio y que apoyan el desarrollo integral del estudiante.
+
+ 
+
+Carga Horaria semanal Total: 4 h
+
+Carga Horaria Total: 56 h
+
+Régimen de cursado: Cuatrimestral
+
+Modalidad de enseñanza y de aprendizaje: Clases Teóricas Prácticas (56 h)
+
+ 
+
+Pueden agregar esto, también (si quieren):
+
+ 
+
+Para aquellos estudiantes que puedan certificar saberes disciplinares y lingüísticos del idioma inglés, implicando la no necesidad de regularización y aprobación de las mencionadas asignaturas, se pondrá a consideración de la Secretaría Académica de la FCEFQyN y la Comisión Curricular Permanente de la carrera, en diálogo con los docentes que impartan las asignaturas, a fin de otorgar la aprobación de la/s asignatura/s correspondiente/s.
+
+\section{Optativas  }
+\textcolor{blue}{PONER ESTE TEXTO Y LISTADO. HAY QUE FILTRAR LA LISTA DE OPTATIVAS}
+
+Las asignaturas optativas, se eligen a partir de una nómina propuesta anualmente por Consejo Departamental de Matemática con el acuerdo de la Comisión Curricular Permanente, quienes a su vez establecen las correlatividades y son aprobadas por el Consejo Directivo de la Facultad. Los estudiantes, con acuerdo de la Comisión Curricular
+Permanente, podrán a su vez cursar asignaturas avanzadas de carreras afines pertenecientes a otras carreras de la Facultad o a otras universidades nacionales internacionales, siempre que, que los contenidos mínimos y la intensidad de carga
+práctica respondan a los establecidos en el presente plan y exista un convenio con la Facultad o Universidad.
+Algunas de las posibles asignaturas optativas a ofrecer son:
+
+
+
+
+\begin{description}
+
+\item[Orientación A:] \emph{Análisis Matemático y Aproximación de Funciones}
+\begin{enumerate}
+
+ 
+
+\item\textbf{Aproximación de Funciones (1986):} El problema general de
+aproximación. Existencia, unicidad y caracterización de mejores
+aproximantes desde subespacios de dimensión finita: norma de
+Tchebycheff. Los algoritmos de Polya y de la Vallé Poussin.
+Desigualdades de Markov y de Berstein. Teoremas de convergencia en
+norma de Tchebycheff. Horas: 126.
+ Bibliografía sugerida:
+\cite{rice1964approximation,lorentz2005approximation,meinardus2012approximation}
+
+\item\textbf{ Aproximacion por Funciones Racionales (2270):}  Existencia de la mejor aproximación racional  generalizada.  Propiedades  de  interpolación  de  mejores
+aproximantes.   Criterio de Komogorov.  Caracterización de mejores aproximantes racionales en la norma supremo.   Orden de aproximación por funciones racionales algebraicas.
+Aproximación de funciones reales continuas por racionales algebraicas complejas en la norma
+supremo. Existencia, caracterización y unicidad de mejores a
+proximantes. Horas: 126.
+Bibliografía sugerida: \cite{rice1964approximation,lorentz2005approximation,meinardus2012approximation}.
+
+\item\textbf{ Aproximación Simultánea en Espacios Normados (2269)  } Existencia de mejores aproximantes simultáneos.  Conjunto   S-proximinal.   Existencia   de
+mejores   aproximantes simultáneos    relativas    a    subconjuntos    convexos.    Reducción    de    mejores aproximantes simultáneos a mejores aproximantes.
+ Unicidad de mejores aproximantes simultáneos.  Caracterización    de    mejores    aproximantes    simultáneos.  Puntos  extremales  en  espacios  productos.
+Caracterización  de  mejores  aproximantes  simultáneos   relativas  a  subconjuntos
+convexos.  Caracterización  de  mejores aproximantes  simultáneos  mediante  funcionales  extre
+males.  Aplicaciones  a  los espacios: $C[a,b]$, $L^1[0,1]$ y $L^p[0,1]$, $1 < p <\infty$.
+Horas: 144.
+\item\textbf{  Introducción a la Teoría de Aproximación (2278):}
+Mejor aproximación en espacios normados con las normas clásicas por polinomios y funciones racionales. Existencia, unicidad y caracterización. Algoritmos. Desigualdades polinomiales. Orden de aproximación. Horas: 154. Bibliografía sugerida: \cite{lorentz2005approximation,rice1964approximation}.
+
+\item\textbf{ Espacios Funcionales y
+Aproximación de Funciones (2224)} Interpolación de Funciones. Aproximación de Funciones. Espacios de Orlicz. Espacios de Lorentz.Horas: 140. Bibliografía sugerida: \cite{KR,bennett1988interpolation,cheney}.
+
+
+\item \textbf{Análisis Complejo:} Principio de modulo máximo. Teorema de
+Rouche. Productos infinitos. Descomposición en fracciones simples,
+Teorema de Mittag-Leffer. Funciones Armónicas. Función $\zeta$ de
+Riemmann. Aplicaciones a la Teoría de Números. Continuación
+Analítica. Superficies de Riemann. Bibliografía sugerida:
+\cite{ahlfors,conway}
+
+\item\textbf{Complementos de Análisis Real:} Medidas abstractas. Medidas de
+Radon. Teorema de Radon-Nikodyn. Derivación de Medidas. Lemas de
+cubrimiento. Diferenciación de la integral. Desigualdad maximal de
+Hardy y Littlewood. Teorema de diferenciación de Lebesgue.
+Aproximaciones de la identidad. Aplicaciones al problema de
+Dirichlet al semiespacio. Dualidad de los espacios $L^p$.
+Convergencia débil. Biblio\-grafía sugerida:
+\cite{evansgariepy,favazo,rudin}.
+
+
+\end{enumerate}
+
+\item[Orientación B:] \emph{Ecuaciones Diferenciales y Matemática Aplicada}
+\begin{enumerate}
+
+
+\item\textbf{ Introducción a las Ecuaciones en Derivadas Parciales (2212):} Ecuaciones nolineales
+de primer orden. Método de características. Ecuaciones de
+Hamilton-Jacobi. Espacios de Sobolev. Desigualdades de Sobolev. Soluciones débiles. Teorema Lax-Milgram. Existencia soluciones débiles.  
+Regularidad. Principio de máximo. Desigualdad de Harnack. Problemas de autovalores.  Horas: 120. Bibliografía sugerida: \cite{evans}.
+
+\item\textbf{Tópicos de Física Matemática (2275):} Ecuación general de
+Sturm-Liouville.  Ecuación de Laplace y del calor en
+diferentes coordenadas. Funciones de Bessel. Polinomios de
+Legendre. Armónicos esféricos. Funciones gaussianas en cálculos de
+mecánica cuántica: propiedades de las gaussianas. Integrales
+multicéntricas. Horas: 100.Bibliografía sugerida: \cite{alder, pinsky}.
+
+
+
+
+\item\textbf{ Sistemas Lineales (2271):} Sistemas consistentes e inconsistentes. El   método   de   mínimos   cuadrados.   Factorización   $QR$ y $SVD$.
+ La solución Chebyshev de sistemas lineales inconsistentes
+La solución en $l_1$  de sistemas lineales inconsistentes. Horas: 126. Bibliografía sugerida: \cite{golub,watkins2004fundamentals}
+
+
+
+
+\item\textbf{ Cálculo Numérico II (2276):} Solución numérica de ecuaciones
+diferenciales ordinarias y parciales. Método de Runge-Kutta.
+Diferencias finitas y Método de Elementos Finitos. Horas: 100. Bibliografía
+sugerida: \cite{burden, cheney, kendall, brenner,  thomas}.
+
+
+
+
+
+
+\item \textbf{Sistemas Dinámicos (2267)}  Flujo de una ecuación autónoma. Órbitas y conjuntos invariantes. Estabilidad en los equilibrios.   Linearización. Variedades estables e inestables. Teorema de Hartman-Grobman. Método de
+Lyapunov. Estabilidad soluciones periódicas. Sistemas autónomos planos. El Teorema de Poincare Bedixson. Horas: 135. Bibliografía  sugerida: \cite{betounes2009differential,teschl2012ordinary}.
+
+\item\textbf{ Cálculo de Variaciones (2280)}. Funciones de variación acotada y absolutamente continus. Espacios de Sobolev. El método diercto del cálculo de variaciones. Teorema de Krasnoselski. Teoremas de semicontinuidad y existencia de Tonelli. Ejemplos de no exixtencia de mínimos. Soluciones periódicas de sistemas Hamiltonianos. Horas: 154. Bibliografía  sugerida: \cite{mawhin2013critical,buttazzo1998one}.
+
+\item\textbf{Inecuaciones Variacionales Elípticas (2279)}. Inecuaciones
+Variacionales E\-lípticas en Espacios de Hilbert. Inecuaciones
+Variacional con Forma Bilineal, Continua, Coercitiva y Simétrica.
+Inecuación Variacional con Forma Bilineal, Continua, Coercitiva y
+No Simétrica. Aplicaciones. Minimización de Funcionales en
+Espacios de Banach reflexivos. Relaciones entre Inecuaciones
+Variacionales y Minimización de Funciona\-les. Problemas de
+Frontera Libre: Problema de la Pared Semi-permea\-ble, Problema
+del Obstáculo, Fluido Viscoplástico de Bingham, Problema de Stefan
+a dos fases. Análisis Numérico de inecuaciones variacionales
+Elípticas. Bibliografía sugerida: \cite{ekel, kinder}
+
+
+ 
+
+
+\item\textbf{Problemas de Frontera Libre:} Problemas de Frontera Fija, Móvil
+y Libre para la Ecuación del Calor Unidimensional. Problemas de
+Frontera Libre de tipo explícito e implícito. Los problemas de
+Stefan y de la Difusión-Consumo de Oxígeno. Soluciones Exactas de
+Lamé-Clapeyron y de Neumann, y sus Aplicaciones. Diferentes
+Métodos Teóricos y Aproximados para el estudio de la solución del
+problema de Stefan a una fase con condiciones de contorno de
+Temperatura o Flujo de calor en el borde fijo. Comportamiento
+asintótico de la Frontera Libre. El problema de Stefan a dos
+fases. Bibliografía  sugerida: \cite{hill,tarzia}
+
+
+
+\end{enumerate}
+
+\item[Orientación C]\emph{Didáctica de la Matemática}
+
+\begin{enumerate}
+\item\textbf{ Didáctica de la Matemática y Epistemologia (2273):} Desarrollos actuales de la Didáctica de la Matemática. Programa Epistemológico. Las matemáticas en la sociedad. El rol del razonamiento plausible en procesos de enseñanza y de aprendizaje de las matemáticas.  Programas de investigación y propuestas en Didáctica de las Matemáticas. Horas: 135. Bibliografía sugerida: \cite{chevallard, brousseau1986fundamentos,godino2012origen}.
+
+
+
+\item  \textbf{Introducción a la Didáctica de la Matemática:} El objeto de la Didáctica de la
+Matemática. Su especificidad disciplinaria. Su método de
+investigación. Sus orientaciones.
+
+
+\item\textbf{Metodología de la Investigación Educativa:} El proceso
+de investigación y sus dimensiones. Comprensión y explicación
+científica. El objeto de la investigación educativa. El valor de
+la investigación educativa en la práctica pedagógica. Las
+distintas posiciones teóricas y metodológicas. La observación
+científica y la obtención de datos educativos. La validez en sus
+diferentes formas y enfoques. El concepto de muestra en la
+perspectiva de la investigación educativa y social. Diseño de
+investigaciones experimentales y cuasi experimentales. La
+ingeniería didáctica. El caso único. La investigación acción.
+
+
+
+\item\textbf{Enfoque Ontológico-Semiótico en Didáctica de la
+Matemática:} Programa epistemológico: perspectiva
+semiótica-Antropológica de la Di\-dáctica de las Matemáticas.
+Naturaleza de los objetos matemáticos. Lenguaje matemático. La
+noción de significado como herramienta di\-dáctica. Significados
+personales e institucionales de las objetos mate\-máticos.
+Sistemas de prácticas: sus componentes. Comprensión y competencia:
+relación dialéctica.
+
+\item\textbf{Teoría Antropológica de lo Didáctico:} Razón de ser  de las
+matemáti\-cas escolares. Génesis del problema de la articulación
+del currículum de matemática. Teoría y práctica de la Ingeniería
+Didáctica. Razón de ser  de las matemáticas escolares.El autismo
+temático. La modelización matemática como instrumento de
+articulación. \hyphenation{in-tui-cio-nis-mo}
+\item\textbf{Epistemología de la Matemática:}
+La epistemología y su relación con la Historia de la Ciencia  y
+con la Filosofía de la Ciencia. La epistemología como estudio de
+los discursos científicos. Los mecanismos de la elaboración
+científica. La matemática: su especificidad. El Positivismo y el
+enfoque Hipotético Deductivo. El papel de la Teoría. La dinámica
+del cambio científico. Popper, Khun y Lákatos. La historia interna
+y externa. Bachelard, el Problema Científico y los Obstáculos
+Epistemológicos. La naturaleza de los objetos matemáticos. El
+Intuicionismo Platónico. El Método Demostrativo de Aristóteles. El
+Intuicionismo Kantiano. La Matemática y los procesos de
+mo\-delización. Las corrientes fundamentadoras clásicas:
+Logicismo, Formalismo e Intuicionismo. Una perspectiva
+alternativa: Piaget. El análisis Histórico-Epistemológico de la
+Geometría o el Álgebra. Bibliografía sugerida: \cite{johshua,
+klimo1,klimo2}
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\item[Orientación D]\emph{Estadística}
+\begin{enumerate}
+
+
+
+\item\textbf{ Inferencia Estadística (2035):} Estimación puntual. Métodos de Estimación.
+Evaluación de Estimadores. Test de Hipótesis. Estimación por
+Intervalos. Horas: 90. Bibliografía: \cite{steven,bickel,casella,  rohatgi}.
+
+
+\item\textbf{ Modelos Lineales (2268):} Regresión Lineal Múltiple. Estimación
+Ordinaria y ponderada de los parámetros. Intervalos de Confianza y
+predicción. Medida de Adecuación del Modelo. Supuestos. Métodos
+para la detección y tratamiento de datos atípicos. Criterio de
+Selección de va\-riables. Análisis de la Varianza: Modelo Normal y
+Modelo de Aleato\-rización. Estructura Factorial Ortogonalidad y
+Balanceamiento. Horas: 112. Bibliografía: \cite{peck,rawlyngs,  searle}.
+
+\item\textbf{ Inferencia Robusta (2266):}
+Complementos de Teoría Asintótica: $U$-estadísticos, método de Proyección y método Delta. Posición y Escala: $M$-estimadores, Medias Truncadas; estimadores de dispersión; intervalos y test robustos; otros estimadores.   Medidas de robustez: función de influencia, punto de ruptura, máximo sesgo asintótico, robustez optimal.  Horas: 140.
+Bibliografía \cite{maronna2006robust}
+
+
+\item\textbf{Probabilidades II:}  Convergencia de sucesiones de
+variables aleatorias. Funciones características. Teoremas límites.
+Esperanzas condicionales. Martingalas. Bibliografía \cite{ barry,
+breiman,karr}.
+
+\item\textbf{Procesos Estocásticos:} Cadenas de Markov. Procesos de Poisson.
+Cadenas de Markov con parámetro continuo y discreto. Movimiento
+Browniano. Bibliografía \cite{allen,cox, parzen2,karlin}.
+
+\item\textbf{Taller de Estadística:} Modelado Estadístico. Metodología y Software
+estadístico.
+
+\item\textbf{Probabilidades II:}  Convergencia de sucesiones de
+variables aleatorias. Funciones características. Teoremas límites.
+Esperanzas condicionales. Martingalas. Bibliografía \cite{ barry,
+breiman,karr}.
+
+\item\textbf{Tópicos en Aprendizaje Estadístico (2281):} 
+
+
+\end{enumerate}
+
+
+\item[Orientación E]\emph{Geometría, Álgebra y Grupos de Lie}.
+
+ \begin{enumerate}
+\item\textbf{ Grupos y Álgebras de Lie (3368):}  Grupos de Lie. Álgebras de Lie. La Representación Adjunta y la forma de Killing. Álgebras de Lie nilpotentes y solubles.
+Horas: 126. Bibliografía sugerida: \cite{boothby2003introduction, helgason2001differential}.
+
+\item\textbf{ Variedades Diferenciables y Riemannianas  (2277):}
+Formas diferenciales. Variedades diferenciales. Integración
+sobre variedades. Variedades Riemannianas. Tensor de curvatura.  Ecuaciones estructurales.
+ Horas: 144. Bibliografía: \cite{boothby2003introduction,do2012differential,spivak1988cálculo}
+
+\item\textbf{ Aproximación a la Teoría de Galois (2274):} Ampliaciones algebraicas y trascendentes de un cuerpo.  Cuerpo raíz de una ecuación. El grupo de Galois. Irresolubilidad de la ecuación de quinto grado. Horas: 135. Bibliografía sugerida: \cite{herstein,artin}.
+\end{enumerate}
+
+
+
+\end{description}
+
+\section{Contenidos transversales}
+
+\begin{description}
+  
+
+
+
+\item{\textbf{Competencias}.} Proponer al/ a la estudiante prácticas y actividades que desarrollen las competencias enumeradas en la subsección \ref{subsec:competencias}. Identificar de manera crítica cuáles de estas competencias son desarrolladas en cada actividad curricular.
+
+
+\item{\textbf{Aplicaciones}.}  Contextualizar el conocimiento matemático dentro de la ciencia en general y dentro de la sociedad. Desarrollar aplicaciones de los conocimientos a otras áreas del saber y a la resolución de problemas del mundo real. 
+
+
+
+\item{\textbf{Articulaciones verticales y horizontales.}} Coordinar el abordaje de  temas entre los distintos espacios curriculares. Establecer estrategias conjuntas para la enseñanza y asociaciones entre materias relacionadas, ya sea por ser contemporáneas en el dictado, por correlatividad o por pertenecer a un mismo trayecto del plan. 
+
+
+\item{ \textbf{Sentido de los saberes.}} <<Problematizar, indagar y reflexionar constantemente el sentido de la formación
+universitaria con la intención de mejorarla; además de asumir la responsabilidad social del
+conocimiento en términos de su integración con las prácticas profesionales, de investigación, de
+vinculación con el contexto y sustentada en principios éticos y de transformación hacia una
+sociedad justa y con valores igualitarios, sustentables y ciudadanos.>> \footnote{Resolución CS-UNRC 297/2017, ``Hacia   un   currículo contextualizado, flexible e integrado. Lineamientos para la orientación de la innovación  curricular''}
+
+\item{\textbf{Trabajo en equipo}.} Incentivar en el/la estudiante estrategias de trabajo colectivo. Proponer actividades curriculares   de carácter  grupal.
+
+
+
+\item{ \textbf{Alfabetización académica.}} Proponer a los/las estudiantes actividades que los preparen para la
+elaboración de sus trabajos finales de grado, para la investigación y para la escritura en general. 
+
+
+
+
+\item{\textbf{Prácticas Socio-Comunitarias.} } Incorporar a las materias este tipo de prácticas.
+
+
+\item{ \textbf{Integración de tecnologías de la información}.} Proponer a los/las estudiantes actividades que incluyan el uso de las tecnologías de la información y la programación.  
+
+
+
+\item{\textbf{Políticas de género.}}
+En el contexto de diferentes transformaciones institucionales como la Creación de la Comisión de Género de la Unión Matemática Argentina, la incorporación del apartado 6.f) al Artículo Segundo del nuevo Estatuto de la UMA, la creación de la Red Federal de Género y Diversidades del CONICET, entre otros antecedentes, se plantea la importancia de acompañar estas transformaciones con  modificaciones curriculares. 
+En este plan y en consonancia con la incorporación del apartado 6.f) al Artículo Segundo del nuevo Estatuto de la UMA, se  busca promover la equidad en relación a los derechos de las mujeres e identidades disidentes en todos los quehaceres matemáticos  como así también,  procurar la eliminación de todo tipo de violencia y discriminación basadas en la identidad sexo-genérica.
+También, se busca favorecer “las acciones de discriminación positiva que tiendan a superar los problemas relacionados con las inequidades y el no reconocimiento de derechos”  y    “ promover el apoyo de las vocaciones matemáticas en niñas y adolescentes y jóvenes. Visibilizar las posibilidades y los logros de matemáticas como modo de promoción de vocaciones”.
+ 
+ \item{\textbf{Documentación}} Para otras precisiones sobre criterios para la implementación de este plan se sugiere la lectura de los lineamientos curriculares de la UNRC \footnote{``Hacia   un   currículo contextualizado, flexible e integrado'', Resolución CS-UNRC 297/2017 }
+\footnote{ Resolución CS-UNRC 008/2021}, por lineamientos curriculares definidos en  \cite{paniagua2013educacion}, y por consideraciones contenidas en documentos producidos por diferentes asociaciones que agrupan profesionales matemáticos: \cite{uma,society1996siam,society2012siam,damlamian2013educational}.
+
+\end{description}
+
+
+
+
+\section{5.9 Criterios}  
+
+\textcolor{blue}{ PASAR (COMO SUGIERE LA SA) EL LISTADO QUE HAY AL PUNTO 5.4 CONTENIDOS TRANSVERSALES, DEJAR LO DEL SEGUIMIENTO AGRTEGÁNDOLE}:
+
+\begin{itemize}
+
+\item Entrevistando a egresados/as con el objeto de identificar conocimientos  y capacidades que den cuenta de nuevas  necesidades  emergentes en el mundo laboral.
+
+\item Informando a los/as  estudiantes sobre convocatorias a becas de investigación para estudiantes de grado y tendiendo puentes entre ellos y los equipos de investigación de nuestro departamento. 
+
+\item Promoviendo la participación en programas de movilidad estudiantil. 
+
+\item Mejorando la articulación entre niveles de enseñanza. Por esto nos referimos a la consistencia entre  las competencias y conocimientos que el plan de estudios supone con aquellos   adquiridos por el estudiante en el  nivel medio de  la enseñanza. En este sentido, conjuntamente con la CCP de la Carrera de Prof. en Matemática, se propone crear un grupo de trabajo coordinado por ambas comisiones e integrado por los equipos docentes de asignaturas correspondientes a los dos primeros años de estas carreras con el fin de paulatinamente converger hacia un nuevo paradigma de enseñanza que tome en cuenta las condiciones de los/las alumnos/as ingresantes, las  miradas alternativas que surgen de la investigación en la didáctica de la matemática con enfoques no tradicionales en la enseñanza  de esta ciencia. 
+
+\textcolor{blue}{(esto último se saca de  metodología)}
+
+\end{itemize}
+
+\section{Metodología}
+\textcolor{blue}{SE SACA TODO Y SE PONE:}
+
+
+Actividades asignaturas de matemática:
+
+\begin{description}
+
+\item{ \textbf{Clases Expositivas.}} Se expondrán los conocimientos  que constituyen el   
+fundamento teórico de las distintas materias. Se promoverá la participación  y el análisis crítico de los conocimientos impartidos. 
+
+
+\item{\textbf{Clases de problemas.}} En estas clases el/la estudiante es expuesto a situaciones problemáticas en el contexto de los conocimientos propios de la   materia o de su aplicación a otro   contexto. Se procurará que el/la estudiante desarrolle estrategias de resolución de  problemas de manera autónoma. 
+
+
+\item{\textbf{Lectura y Escritura.}} Con el fin de <<Promover la enseñanza y el aprendizaje de prácticas de lectura y escritura crítica...que potencien competencias comunicativas y cognitivas para el desempeño de diversas prácticas universitarias.>> \footnote{Convocatoria VI PELPA, UNRC}  se incorporará  como estrategia de enseñanza de las distintas  materias la lectura (individual o grupal) de materiales teóricos y su posterior comunicación (oral o escrita). Se propenderá a la incorporación  de prácticas de enseñanza exitosas en el terreno de la lectura y escritura desarrolladas en la UNRC \cite{roldan2022} y a la participaci{on de programas y proyectos destinados a estos fines (PELPA).  Paralelamente, la lectura de materiales en otras lenguas, particularmente inglesa, consolidará la capacidad de los estudiantes para leer y comprender textos en idioma extranjero.  
+
+
+\item{\textbf{Cursos online y webinars.}} Con el propósito de fortalecer  la participación en procesos de internacionalización de la educación\footnote{Plan estratégido 2019 FECFQyN}  se  incorporara en algunas asignaturas como actividad complementaria el uso de materiales escritos y audiovisuales producidos por centros de reconocido prestigio. Por ejemplo, la plataforma \href{https://www.edx.org/es}{https://www.edx.org/es} reune cursos de diversas instituciones, Massachusetts Institute of Technology y Harvard University entre ellas, y ofrece, en muchos casos de manera libre, los materiales de estos cursos, incluído video-clases. 
+
+\item{\textbf{Disertantes invitados.}} Se alentgará la participación en las materias de disertantes invitados. Estas exposiciones pueden tener carácter presencial o virtual.   
+
+
+\textcolor{blue}{Preguntar si la asignatura física tiene laboratorio}
+
+\end{description}
+
+
+
+\bibliographystyle{apalike}
+\bibliography{Bibliografia/Analisis,Bibliografia/Algebra,%
+Bibliografia/Geometria,Bibliografia/BaseBibliografia,Bibliografia/Informatica,Bibliografia/Topologia,Bibliografia/TeoriaMedida,Bibliografia/probabilidad,Bibliografia/funcional}
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+

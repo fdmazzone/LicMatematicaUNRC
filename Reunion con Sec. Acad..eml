@@ -1,0 +1,819 @@
+Delivered-To: fmazzone@exa.unrc.edu.ar
+Received: by 2002:a05:7108:604b:0:0:0:0 with SMTP id v11csp2444979gde;
+        Fri, 30 Sep 2022 15:01:42 -0700 (PDT)
+X-Received: by 2002:a05:6902:45:b0:6ae:ce15:a08d with SMTP id m5-20020a056902004500b006aece15a08dmr9882997ybh.380.1664575301988;
+        Fri, 30 Sep 2022 15:01:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1664575301; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Zg2RjuOwaxNF5TUg7BoceP1dYiYiFzCsg9as+gNnhw4uyFviUT0QZmoiv1z7QtZ10q
+         uW44bmkoIWTKcYaZiaooruwkUP6SJw5lDQHQf2MrfkjiIzzdSHSGlvBqu9p+vFBps5cK
+         9n6utR79mlzVPvdCHBzrJVTSjk0XFGiTNO6bhm73MWpTCOue9PGP1+Uzl3TVF/8zW8Zb
+         +W6ktseBgouHE4cGp/Z+fm+Osat4Xg/Yzdk15hzKD7gD7UO7kKmZ3ZC3gY6tlTaqjias
+         wlR9XBFWgTvMwPoyk45ZSEPjBb2X4qz5AtSWY0dxgNe3wA12kyaPgCZcPXZVpRflQMs/
+         YEeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=WCd6jAlHyM8Gc1hcXVDkcRRfBI3goNMBLf9UeeAsZUs=;
+        b=l8EmHwXLSn2lwsg7t26tcxH4SVrOM+ycGNguVz5BO33j1zqOIkmS2w2HX6s4O/YYEe
+         o5TOIydhoUpBXG4gIp86k6uaQVT+lLgp22yGgMLS0mGBImemCpFXpEtK3wyfkJXEauT3
+         8TYpB6IKis8+MMHtV9VFiEsq4jZN3npCtUj7KUL/RFs8GRpCE6MGya8glmZiOoXz2Aiu
+         8u9o4tJVjNT3Jzl/IIbibpK2TmQO6FLvsu5tc9OgYkBn8EZvt3mNtMT/I2TAAKE8CTTn
+         UVQi0Eu96FSd1gc9pW/bmZ9/ecODU3/peAtYc+aKPgZSAD1DbsZuwbFNVBSPNmDQD59c
+         80FQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@exa.unrc.edu.ar header.s=google header.b=FAA7Qjwv;
+       spf=pass (google.com: domain of flevis@exa.unrc.edu.ar designates 209.85.220.41 as permitted sender) smtp.mailfrom=flevis@exa.unrc.edu.ar;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=unrc.edu.ar
+Return-Path: <flevis@exa.unrc.edu.ar>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a77-20020a811a50000000b003498592d430sor156936ywa.108.2022.09.30.15.01.41
+        for <fmazzone@exa.unrc.edu.ar>
+        (Google Transport Security);
+        Fri, 30 Sep 2022 15:01:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of flevis@exa.unrc.edu.ar designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@exa.unrc.edu.ar header.s=google header.b=FAA7Qjwv;
+       spf=pass (google.com: domain of flevis@exa.unrc.edu.ar designates 209.85.220.41 as permitted sender) smtp.mailfrom=flevis@exa.unrc.edu.ar;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=unrc.edu.ar
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=exa.unrc.edu.ar; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=WCd6jAlHyM8Gc1hcXVDkcRRfBI3goNMBLf9UeeAsZUs=;
+        b=FAA7QjwvFf/3q/tcGRJ8gb5S9KR4f+yQkFOFlK9PnTHeB8FK6MaG9PWBCclvcMAxbO
+         q8GxEEQdiI822KQ+wxR+BkFUefOCGFvBI/fdXplDOHYCE9OFSr+MtK6JsnbL1HccD85C
+         6FrQasCTfkwtZ5b9phD2171I7FClx3GmifrDot2y3vIegSpmPeUAz6NXfsvzh5vqrjNc
+         s3wyB+tgyRoCrjZEDRO+WmbKnfaSh8De3VVfe4EdhdbH0Z1j5RVxCFk3Ye6TdBREKy5B
+         /PoMqMg5hnrLCMVyi4rF7qaCT4JjVDoXy7UzJpsm9wRuJxxR4a3qCsSxREN4SjgWpHfy
+         zZ1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=WCd6jAlHyM8Gc1hcXVDkcRRfBI3goNMBLf9UeeAsZUs=;
+        b=Bcgbs0dHMlbDYEOdM2g8+2f7wA/eilb+UBOpjLNjI2EPBMCq5PfOZlYxH2O9BWSkr+
+         x3ctPPzy8UDjhkpt8AJVJUCB9nMtfXvslFzJbIwXkTZYHc3T96XuI2vNy2qWKV+3cKhk
+         23bcHdRe7iFCKoGpI3XuJDJ8JifDt8US/P0ov/ISAD6MSHpLxEvdHQqDj5niJF3dLhah
+         kt2Kc7+W67ewtuiRIWyBiuGqQBhA9xvLTzDdvIbDOFm+5q38Ix5xmzTdxj94U34DRPfn
+         lF3Uuz9jsTValvFjU/L2yjqXZHS9EtF2GQ8Rtg6HyHT9MaiGZDtOQ/McMLo7/9Z8mbTe
+         yGzQ==
+X-Gm-Message-State: ACrzQf2fS5lolNSYZf0JA6d2z/nP3J2tKGnb7MooTj4xKevBM7J6wfWX
+	LHHnb98WWJSN7ZwcENzFQMX8iyVF5EhheaRkt8SS6TZ3
+X-Google-Smtp-Source: AMsMyM68JcQZGgQrQhAIwmtlEiTb0kn1PZW3+G6vGrora9gSURzyYK7p6DJTbiE1ruJnKbJMdorqYme7XQPoYC0orYc=
+X-Received: by 2002:a0d:eb01:0:b0:348:6ee0:7a4 with SMTP id
+ u1-20020a0deb01000000b003486ee007a4mr10396530ywe.493.1664575300907; Fri, 30
+ Sep 2022 15:01:40 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAATyWVDZ4=J7TF_nLj1ySVK-MFq5Wc08QsV4qCDKfSvx6zFh6A@mail.gmail.com>
+ <CAOwi5H1_L6xkXn8VNRapqxNjKpe-EH4Co+d3qJZ29bhQnCK13A@mail.gmail.com>
+ <CAATyWVDTi1aocMyVrqn0dCFbE1szM10CH8Q_YT4_bnEg67HsTA@mail.gmail.com>
+ <CAA+P_iC=BByeBPPBVv=ROV3rjfXpOrTp6pKVJe8=JJXd-D9pRg@mail.gmail.com>
+ <CALNCgPR2N3B+eR2aF6c3tSCstkzugeW6A6BFA7MJtujOy76=0g@mail.gmail.com>
+ <CACmuvM5EEdVYe8dQNTzF=NA+7wY_cAUEc3eGcGz1Nj8QbZhkww@mail.gmail.com>
+ <CAOwi5H19Dzkvd0tauydATb8AiWEMPG-j1jcs-NBqOFM5ga7o1Q@mail.gmail.com>
+ <CACmuvM4SH54xVJO01fNngpX=3X3xAzVVEpMXVa0N2YxkHg3nbA@mail.gmail.com>
+ <CALNCgPSDttbYfhXd7Ohadj8S2c8jedAZEfTArh2zhzrSH=cV+Q@mail.gmail.com>
+ <CADYAetqdnX-uYN4_s2t0KA8MwxU+voSCA-4CoBQ94LG4xeQ4CA@mail.gmail.com>
+ <CAATyWVDOWUMKJQeWKkwUmD+uzDJvKR7MmjP6J8AnEX=FtX5moA@mail.gmail.com>
+ <CAOwi5H3yeNoHkysS1Aow7rc6ofO1aVRHc-26JZsZqu0f8Jz24g@mail.gmail.com>
+ <CAOwi5H3z1Lo+qHiB6SaF+SJq8V4z6Y6b36ZWRBsO+nf8nWOsvg@mail.gmail.com> <CAA=d2c5aPyc_FLSCxFRHqo9EcvCJ4Ce5EMsazTWBzjVWAbvALA@mail.gmail.com>
+In-Reply-To: <CAA=d2c5aPyc_FLSCxFRHqo9EcvCJ4Ce5EMsazTWBzjVWAbvALA@mail.gmail.com>
+From: =?UTF-8?Q?Fabi=C3=A1n_LEVIS?= <flevis@exa.unrc.edu.ar>
+Date: Fri, 30 Sep 2022 19:01:29 -0300
+Message-ID: <CAATyWVAuBP5Vq=Pyqbh4FypPDA42ocq0NddnxuT06VdpgWJ3=w@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_Reunion_con_Sec=2E_Acad=2E_y_difusi=C3=B2n_de_becas?=
+To: Pao Moas <paomoas@gmail.com>
+Cc: Fernando MAZZONE <fmazzone@exa.unrc.edu.ar>, Stefania DEMARIA <sdemaria@exa.unrc.edu.ar>, 
+	Marcelo RUIZ <mruiz@exa.unrc.edu.ar>, Graciela GIUBERGIA <ggiubergia@exa.unrc.edu.ar>, 
+	David FERREYRA <deferreyra@exa.unrc.edu.ar>
+Content-Type: multipart/alternative; boundary="000000000000834fac05e9ec2357"
+
+--000000000000834fac05e9ec2357
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+=C2=A1Hola! Buenas tardes.
+
+
+Les adjunto un resumen de los puntos que se trataron hoy en la reuni=C3=B3n=
+ con
+la Secretaria Acad=C3=A9mica. Las consultas y cambios a realizar en el Plan=
+ son
+de forma.
+
+=C2=A1Le gust=C3=B3 mucho el plan!
+
+
+
+PUNTOS A TRATAR
+
+
+
+* Agregar las potenciales asignaturas donde pueden incluir las pr=C3=A1ctic=
+as
+socio comunitarias, de manera que el docente que se haga carga de la
+asignatura sepa que es una actividad a realizar. Ver Plan de Qu=C3=ADmica (=
+RCD
+088/22) y Plan de Geolog=C3=ADa (RCD 122/22); Es importante ver como implem=
+entar
+una pr=C3=A1ctica socio comunitaria dentro de una asignatura;
+
+* Agregar contenidos de derechos humanos que surgi=C3=B3 del CIN, la Univer=
+sidad
+adopt=C3=B3 y se va a presentar como un anexo a la R 297 sobre los lineamie=
+ntos;
+
+* Ver que los alcances del t=C3=ADtulo se cumplen con todos los contenidos
+m=C3=ADnimos de las asignaturas;
+
+* Verificar que las capacidades y habilidades que esperamos que el
+profesional tenga se hayan cumplido durante el cursado de todas las
+asignaturas. Por ejemplo, si se dice comunicarse con otros profesionales no
+matem=C3=A1ticos, ver qu=C3=A9 actividad se planifica para que el egresado =
+tenga
+dicha habilidad. Otro ejemplo, ve, leer, escribir documentos y comunicarse
+en ingl=C3=A9s, =C2=BFAlcanza con el ingl=C3=A9s que cursan? Tambi=C3=A9n, =
+trabajar con equipos
+interdisciplinarios =C2=BFQu=C3=A9 hacemos en la curricular? =C2=BFNos junt=
+amos con
+profesionales de Computaci=C3=B3n, etc.? Marcelo coment=C3=B3 la experienci=
+a con
+Microbiolog=C3=ADa. En s=C3=ADntesis, las capacidades y alcances deben esta=
+r
+contempladas en alg=C3=BAn lado;
+
+* Respecto a los requisitos del Ingreso, no nombrar la R 120/17 porque no
+se sabe si va a seguir vigente (es solo de forma);
+
+* Nueva propuesta de ingl=C3=A9s. Habr=C3=A1 dos asignaturas cuatrimestrale=
+s
+separadas por disciplina (podr=C3=ADamos estar junto a f=C3=ADsica y comput=
+aci=C3=B3n).
+Ser=C3=A1n de 4 hs semanales (2 hs son asincr=C3=B3nicas con uso de computa=
+dores y 2
+hs presenciales). La SA nos va a enviar los contenidos m=C3=ADnimos y la
+metodolog=C3=ADa para saber si estamos de acuerdo;
+
+* Sociolog=C3=ADa de la Educaci=C3=B3n. Van a poner nuevo c=C3=B3digo porqu=
+e si bien los
+contenidos son los mismos, hay terminolog=C3=ADa que ya no se usa. La SA no=
+s va
+a pasar los contenidos;
+
+* Hay que poner un listado de materias optativas y si queremos con
+tem=C3=A1ticas bien amplias. Poner un p=C3=A1rrafo como que las optativas s=
+er=C3=A1n a
+propuesta del docente y que sean aprobadas por la CCP, el Consejo
+Departamental y el Directivo. Ver lo que puso Qu=C3=ADmica y Geolog=C3=ADa =
+en el
+plan;
+
+* Agregar contenidos m=C3=ADnimos de Derechos Humanos en materias de matem=
+=C3=A1tica.
+La SA nos va a pasar un documento, un listado que fue elaborado por el
+Consejo Acad=C3=A9mico. Por ejemplo, Micro en ciertas asignaturas puso dere=
+cho a
+la vida, derecho al cuidado del medio ambiente. Se puede invitar a alguien
+que lo d=C3=A9. No hace falta que el docente lo d=C3=A9. Puede ser un talle=
+r;
+
+* Agregar tambi=C3=A9n contenidos sobre comunicaci=C3=B3n oral y escrita; P=
+or
+ejemplos, pedir exposiciones, redacci=C3=B3n de informes. Hay que preparar =
+al
+estudiante para cuando realice el trabajo final no sea un problema.  La
+actividad de escritura que es un contenido  transversal muy importante;
+
+* Metodolog=C3=ADa =C2=BFQu=C3=A9 formato tendr=C3=A1n los espacios curricu=
+lares? Ser=C3=A1n
+te=C3=B3ricos, pr=C3=A1cticos, te=C3=B3rico/pr=C3=A1ctico, seminarios, tall=
+es, podr=C3=A1n contar
+con invitados, visitas educativas, participaci=C3=B3n en seminarios
+internacionales;
+
+* Trayectos abiertos con optativas y electiva. Dejar=C3=ADa un poco abierto=
+ las
+materias, pues puede haber una optativa que no est=C3=A1 incluida. Poner qu=
+e
+puede haber otras posibilidades;
+
+* Respecto al punto 5.7.9 hay cambiar de lugar, la mayor=C3=ADa podr=C3=ADa=
+ ir en los
+contenidos transversales del curr=C3=ADculo (punto 5.7.4). Por ejemplo,
+pol=C3=ADticas de g=C3=A9nero. El =C3=ADtem se refiere a =C2=BFc=C3=B3mo va=
+mos a implementar el
+plan? =C2=BFC=C3=B3mo vamos a hacer el seguimiento de los estudiantes? Este=
+ es el
+trabajo de la CCP. Ver plan de Qu=C3=ADmica;
+
+* =C2=BFLas materias con c=C3=B3digo son exactamente iguales? En caso contr=
+ario, no
+poner c=C3=B3digos. Se dejan los mismos c=C3=B3digos siempre y cuando se re=
+speten
+contenidos y carga horaria;
+
+* Agregar en alg=C3=BAn lado contenido de =C3=A9tica profesional. Por ejemp=
+lo, hacer
+un seminario obligatorio en el trabajo final;
+
+* Respecto al punto 5.7.6 hacer referencia a actividades suplementarias. Se
+podr=C3=ADa agregar algo recreativo, divulgaci=C3=B3n de la matem=C3=A1tica=
+. Ver tambi=C3=A9n
+Plan de Qu=C3=ADmica;
+
+* El plan de transici=C3=B3n debe ser por separado (punto 5.7.7); Por las d=
+udas,
+si algo no funciona no hay que cambiar todo. Por ende, se hace un incidente
+del expediente. Ver el plan de Qu=C3=ADmica;
+
+* Empezar a hacer un reglamento de trabajo final.
+
+
+
+Saludos y buen finde
+
+Fabi=C3=A1n
+
+
+
+
+
+El jue, 29 sept 2022 a las 13:42, Pao Moas (<paomoas@gmail.com>) escribi=C3=
+=B3:
+
+> Buenas tardes a tod@s. Ma=C3=B1ana no podr=C3=A9 asistir a la reuni=C3=B3=
+n con la SA.
+> Confirmo asistencia para la reuni=C3=B3n de la CC el martes 11/10.
+>
+> Saludos,
+>
+> Paola
+>
+> El jue., 29 sep. 2022 12:48, Fernando MAZZONE <fmazzone@exa.unrc.edu.ar>
+> escribi=C3=B3:
+>
+>> Hola compa=C3=B1eras/os,
+>>
+>> Les confirmo que por indicaci=C3=B3n m=C3=A9dica  no voy a ir a la reuni=
+=C3=B3n con la
+>> secretaria. Recuerden que se desarrollar=C3=A1 en la oficina de ella a l=
+as 14:30
+>> horas. Ya le avis=C3=A9 que iban a ir otros integrantes de la CCP.
+>> Buen finde
+>> Fernando
+>>
+>> El mi=C3=A9, 28 sept 2022 a las 11:20, Fernando MAZZONE (<
+>> fmazzone@exa.unrc.edu.ar>) escribi=C3=B3:
+>>
+>>> Buen d=C3=ADa. Gracias por responder. Aviso que estoy con un poco de
+>>> congesti=C3=B3n y quiz=C3=A1s no pueda ir el viernes. Les confirmo bien=
+ ma=C3=B1ana. Pero
+>>> es importante que se haga la reuni=C3=B3n con la secretaria, as=C3=AD d=
+amos el
+>>> pr=C3=B3ximo paso.
+>>>
+>>> Fernando
+>>>
+>>>
+>>>
+>>> El mi=C3=A9, 28 sept 2022 a las 11:13, Fabi=C3=A1n LEVIS (<flevis@exa.u=
+nrc.edu.ar>)
+>>> escribi=C3=B3:
+>>>
+>>>> Hola
+>>>> Acuerdo con que la reuni=C3=B3n de la CCP sea el martes 11/10
+>>>> Saludos
+>>>> Fabi=C3=A1n
+>>>>
+>>>> El mi=C3=A9, 28 sept 2022 a las 11:08, Stefania DEMARIA (<
+>>>> sdemaria@exa.unrc.edu.ar>) escribi=C3=B3:
+>>>>
+>>>>> Hola a todos! No puedo asistir en ese horario el viernes a la reuni=
+=C3=B3n.
+>>>>> Acuerdo con que la reuni=C3=B3n de la CC sea el martes 11/10. Gracias=
+ por
+>>>>> compartir el escrito de Fabian. Saludos!
+>>>>>
+>>>>> El mi=C3=A9, 28 sept 2022 a las 7:01, Marcelo RUIZ (<mruiz@exa.unrc.e=
+du.ar>)
+>>>>> escribi=C3=B3:
+>>>>>
+>>>>>> Hola a todxs buenos d=C3=ADas.
+>>>>>> Fernando bien, dejamos confirmada entonces como pr=C3=B3xima reuni=
+=C3=B3n de
+>>>>>> la  CC para el  11/10.
+>>>>>> Abzo
+>>>>>> M
+>>>>>>
+>>>>>> El mar, 27 sept 2022 a las 14:14, Graciela GIUBERGIA (<
+>>>>>> ggiubergia@exa.unrc.edu.ar>) escribi=C3=B3:
+>>>>>>
+>>>>>>> De acuerdo. Saludos
+>>>>>>>
+>>>>>>> El mar, 27 sept 2022 a las 14:01, Fernando MAZZONE (<
+>>>>>>> fmazzone@exa.unrc.edu.ar>) escribi=C3=B3:
+>>>>>>>
+>>>>>>>> Hola nuevamente,
+>>>>>>>>
+>>>>>>>> Marcelo, es verdad, la reuni=C3=B3n anterior fue el 30 de agosto, =
+si nos
+>>>>>>>> ajustamos a lo que dijimos nos deber=C3=ADamos haber reunido el 13=
+/9, 27/9 (hoy)
+>>>>>>>> y tocar=C3=ADa el 11/10.
+>>>>>>>>
+>>>>>>>> No hay problema, no hay apuro. Mantengamos la previsibilidad  y
+>>>>>>>> convoquemonos para el martes 11/10.
+>>>>>>>>
+>>>>>>>> Fernando
+>>>>>>>>
+>>>>>>>> El mar, 27 sept 2022 a las 13:15, Graciela GIUBERGIA (<
+>>>>>>>> ggiubergia@exa.unrc.edu.ar>) escribi=C3=B3:
+>>>>>>>>
+>>>>>>>>> Hola a tod@s.
+>>>>>>>>> El viernes no podr=C3=A9 asistir a la reuni=C3=B3n con Sec Acad=
+=C3=A9mica,  pero
+>>>>>>>>> el martes estar=C3=A9 en la de CC.
+>>>>>>>>> saludos
+>>>>>>>>>
+>>>>>>>>> El mar., 27 sept. 2022 12:58, Marcelo RUIZ <mruiz@exa.unrc.edu.ar=
+>
+>>>>>>>>> escribi=C3=B3:
+>>>>>>>>>
+>>>>>>>>>> Hola Fernando, hola a tod@s.
+>>>>>>>>>> 1) El viernes estar=C3=A9 en la reuni=C3=B3n.
+>>>>>>>>>> 2) Leer=C3=A9 con atenci=C3=B3n la propuesta de Fabi=C3=A1n
+>>>>>>>>>> 3) Respecto de la reuni=C3=B3n de la CC, tengo agendado (en t=C3=
+=A9rminos
+>>>>>>>>>> de reuniones quincenales) el 11 de octubre. El 4 no puedo, de to=
+dos modos
+>>>>>>>>>> si hubiese urgencia, acuerdo que la reuni=C3=B3n se realice el d=
+=C3=ADa 4/10.
+>>>>>>>>>> Abzo
+>>>>>>>>>> M
+>>>>>>>>>>
+>>>>>>>>>> El mar, 27 sept 2022 a las 9:41, David FERREYRA (<
+>>>>>>>>>> deferreyra@exa.unrc.edu.ar>) escribi=C3=B3:
+>>>>>>>>>>
+>>>>>>>>>>> Gracias Fernando. De acuerdo. Confirmo asistencia.
+>>>>>>>>>>>
+>>>>>>>>>>> Saludos
+>>>>>>>>>>>
+>>>>>>>>>>> El mar, 27 de sep. de 2022 9:38 a. m., Fabi=C3=A1n LEVIS <
+>>>>>>>>>>> flevis@exa.unrc.edu.ar> escribi=C3=B3:
+>>>>>>>>>>>
+>>>>>>>>>>>> Hola Fernando. Gracias por la informaci=C3=B3n. Confirmo asist=
+encia
+>>>>>>>>>>>> para el viernes  30/9 con la Sec. Acad. y el martes 4/10 con l=
+a CCP.
+>>>>>>>>>>>> Saludos, Fabian
+>>>>>>>>>>>>
+>>>>>>>>>>>> El mar, 27 sept 2022 9:29, Fernando MAZZONE <
+>>>>>>>>>>>> fmazzone@exa.unrc.edu.ar> escribi=C3=B3:
+>>>>>>>>>>>>
+>>>>>>>>>>>>> Estimadas/os Compa=C3=B1eras/os,
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> 1)  El pr=C3=B3ximo viernes 30 a las 14:30 la Secrtetaria Aca=
+d=C3=A9mica
+>>>>>>>>>>>>> de la FCEFQyN nos convoca a una reuni=C3=B3n en su oficina pa=
+ra tratar el plan
+>>>>>>>>>>>>> de estudios. Le confirm=C3=A9 la asistencia, cuantos m=C3=A1s=
+ puedan sumarse mejor.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>  2) Fabian elabor=C3=B3 un primer borrador del proyecto de di=
+fusi=C3=B3n
+>>>>>>>>>>>>> de becas y pr=C3=A1cticas de investigaci=C3=B3n. Se los envio=
+ adjunto.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> 3) Me parece que es conveniente escuchar primero a la SA y
+>>>>>>>>>>>>> luego reunirnos, por ese motivo sugiero nos reunamos el pr=C3=
+=B3ximo martes 4/10
+>>>>>>>>>>>>> a la hora convenida para tratar el proyecto de difusi=C3=B3n =
+y lo que surja de
+>>>>>>>>>>>>> la reuni=C3=B3n con la SA.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> Nos estamos viendo.
+>>>>>>>>>>>>>
+>>>>>>>>>>>>> Fernando
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>
+>>>>>>>>>>>>>
+>>>>
+>>>> --
+>>>> Dr. Fabi=C3=A1n Eduardo Levis
+>>>> Universidad Nacional de R=C3=ADo Cuarto
+>>>> CONICET, FCEFQyN
+>>>> Departamento de Matem=C3=A1tica
+>>>> Ruta Nacional 36 km. 601, R=C3=ADo Cuarto, X5804BYA, Argentina.
+>>>> email: flevis@exa.unrc.edu.ar
+>>>> Tel.: +54 (358) 4767234
+>>>>
+>>>
+
+--=20
+Dr. Fabi=C3=A1n Eduardo Levis
+Universidad Nacional de R=C3=ADo Cuarto
+CONICET, FCEFQyN
+Departamento de Matem=C3=A1tica
+Ruta Nacional 36 km. 601, R=C3=ADo Cuarto, X5804BYA, Argentina.
+email: flevis@exa.unrc.edu.ar
+Tel.: +54 (358) 4767234
+
+--000000000000834fac05e9ec2357
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;te=
+xt-align:justify;line-height:normal;font-size:11pt;font-family:Calibri,&quo=
+t;sans-serif&quot;"><span style=3D"font-size:10pt">=C2=A1Hola! Buenas tarde=
+s. </span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-=
+align:justify;line-height:normal;font-size:11pt;font-family:Calibri,&quot;s=
+ans-serif&quot;"><span style=3D"font-size:10pt"><br></span></p><p class=3D"=
+MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:=
+normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span sty=
+le=3D"font-size:10pt">Les adjunto un resumen de los puntos que se
+trataron hoy en la reuni=C3=B3n con la Secretaria Acad=C3=A9mica. Las consu=
+ltas y cambios
+a realizar en el Plan son de forma.</span></p><p class=3D"MsoNormal" style=
+=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-size=
+:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:=
+10pt">=C2=A1Le gust=C3=B3 mucho el plan!</span></p><p class=3D"MsoNormal" s=
+tyle=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-=
+size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-s=
+ize:10pt">=C2=A0</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0=
+.0001pt;text-align:justify;line-height:normal;font-size:11pt;font-family:Ca=
+libri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">PUNTOS A TRATA=
+R</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-al=
+ign:justify;line-height:normal;font-size:11pt;font-family:Calibri,&quot;san=
+s-serif&quot;"><span style=3D"font-size:10pt">=C2=A0</span></p><p class=3D"=
+MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:=
+normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span sty=
+le=3D"font-size:10pt">* Agregar
+las potenciales asignaturas donde pueden incluir las pr=C3=A1cticas socio
+comunitarias, de manera que el docente que se haga carga de la asignatura s=
+epa
+que es una actividad a realizar. Ver Plan de Qu=C3=ADmica (RCD 088/22) y Pl=
+an de
+Geolog=C3=ADa (RCD 122/22); Es importante ver como implementar una pr=C3=A1=
+ctica socio
+comunitaria dentro de una asignatura;</span></p><p class=3D"MsoNormal" styl=
+e=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-siz=
+e:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size=
+:10pt">* Agregar
+contenidos de derechos humanos que surgi=C3=B3 del CIN, la Universidad adop=
+t=C3=B3 y se
+va a presentar como un anexo a la R 297 sobre los lineamientos; </span></p>=
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;=
+line-height:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot=
+;"><span style=3D"font-size:10pt">* Ver que
+los alcances del t=C3=ADtulo se cumplen con todos los contenidos m=C3=ADnim=
+os de las
+asignaturas;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.000=
+1pt;text-align:justify;line-height:normal;font-size:11pt;font-family:Calibr=
+i,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">* Verificar
+que las capacidades y habilidades que esperamos que el profesional tenga se
+hayan cumplido durante el cursado de todas las asignaturas. Por ejemplo, si=
+ se
+dice comunicarse con otros profesionales no matem=C3=A1ticos, ver qu=C3=A9 =
+actividad se
+planifica para que el egresado tenga dicha habilidad. Otro ejemplo, ve, lee=
+r,
+escribir documentos y comunicarse en ingl=C3=A9s, =C2=BFAlcanza con el ingl=
+=C3=A9s que cursan?
+Tambi=C3=A9n, trabajar con equipos interdisciplinarios =C2=BFQu=C3=A9 hacem=
+os en la
+curricular? =C2=BFNos juntamos con profesionales de Computaci=C3=B3n, etc.?=
+ Marcelo
+coment=C3=B3 la experiencia con Microbiolog=C3=ADa. En s=C3=ADntesis, las c=
+apacidades y
+alcances deben estar contempladas en alg=C3=BAn lado;</span></p><p class=3D=
+"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height=
+:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span st=
+yle=3D"font-size:10pt">* Respecto
+a los requisitos del Ingreso, no nombrar la R 120/17 porque no se sabe si v=
+a a
+seguir vigente (es solo de forma);</span></p><p class=3D"MsoNormal" style=
+=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-size=
+:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:=
+10pt">* Nueva
+propuesta de ingl=C3=A9s. Habr=C3=A1 dos asignaturas cuatrimestrales separa=
+das por
+disciplina (podr=C3=ADamos estar junto a f=C3=ADsica y computaci=C3=B3n). S=
+er=C3=A1n de 4 hs
+semanales (2 hs son asincr=C3=B3nicas con uso de computadores y 2 hs presen=
+ciales).
+La SA nos va a enviar los contenidos m=C3=ADnimos y la metodolog=C3=ADa par=
+a saber si
+estamos de acuerdo;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0c=
+m 0.0001pt;text-align:justify;line-height:normal;font-size:11pt;font-family=
+:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">* Sociolog=
+=C3=ADa
+de la Educaci=C3=B3n. Van a poner nuevo c=C3=B3digo porque si bien los cont=
+enidos son los
+mismos, hay terminolog=C3=ADa que ya no se usa. La SA nos va a pasar los co=
+ntenidos;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt=
+;text-align:justify;line-height:normal;font-size:11pt;font-family:Calibri,&=
+quot;sans-serif&quot;"><span style=3D"font-size:10pt">* Hay que
+poner un listado de materias optativas y si queremos con tem=C3=A1ticas bie=
+n
+amplias. Poner un p=C3=A1rrafo como que las optativas ser=C3=A1n a propuest=
+a del docente
+y que sean aprobadas por la CCP, el Consejo Departamental y el Directivo. V=
+er
+lo que puso Qu=C3=ADmica y Geolog=C3=ADa en el plan; </span></p><p class=3D=
+"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height=
+:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span st=
+yle=3D"font-size:10pt">* Agregar
+contenidos m=C3=ADnimos de Derechos Humanos en materias de matem=C3=A1tica.=
+ La SA nos va
+a pasar un documento, un listado que fue elaborado por el Consejo Acad=C3=
+=A9mico.
+Por ejemplo, Micro en ciertas asignaturas puso derecho a la vida, derecho a=
+l
+cuidado del medio ambiente. Se puede invitar a alguien que lo d=C3=A9. No h=
+ace falta
+que el docente lo d=C3=A9. Puede ser un taller;</span></p><p class=3D"MsoNo=
+rmal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:norma=
+l;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D=
+"font-size:10pt">* Agregar
+tambi=C3=A9n contenidos sobre comunicaci=C3=B3n oral y escrita; Por ejemplo=
+s, pedir
+exposiciones, redacci=C3=B3n de informes. Hay que preparar al estudiante pa=
+ra cuando
+realice el trabajo final no sea un problema.=C2=A0=C2=A0La actividad de
+escritura que es un contenido=C2=A0=C2=A0transversal muy importante;</span>=
+</p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:just=
+ify;line-height:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&=
+quot;"><span style=3D"font-size:10pt">* Metodolog=C3=ADa
+=C2=BFQu=C3=A9 formato tendr=C3=A1n los espacios curriculares? Ser=C3=A1n t=
+e=C3=B3ricos, pr=C3=A1cticos,
+te=C3=B3rico/pr=C3=A1ctico, seminarios, talles, podr=C3=A1n contar con invi=
+tados, visitas
+educativas, participaci=C3=B3n en seminarios internacionales; =C2=A0</span>=
+</p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:just=
+ify;line-height:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&=
+quot;"><span style=3D"font-size:10pt">* Trayectos
+abiertos con optativas y electiva. Dejar=C3=ADa un poco abierto las materia=
+s, pues
+puede haber una optativa que no est=C3=A1 incluida. Poner que puede haber o=
+tras
+posibilidades;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0=
+001pt;text-align:justify;line-height:normal;font-size:11pt;font-family:Cali=
+bri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">* Respecto
+al punto 5.7.9 hay cambiar de lugar, la mayor=C3=ADa podr=C3=ADa ir en los =
+contenidos
+transversales del curr=C3=ADculo (punto 5.7.4). Por ejemplo, pol=C3=ADticas=
+ de g=C3=A9nero. El
+=C3=ADtem se refiere a =C2=BFc=C3=B3mo vamos a implementar el plan? =C2=BFC=
+=C3=B3mo vamos a hacer el
+seguimiento de los estudiantes? Este es el trabajo de la CCP. Ver plan de
+Qu=C3=ADmica;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.00=
+01pt;text-align:justify;line-height:normal;font-size:11pt;font-family:Calib=
+ri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">* =C2=BFLas
+materias con c=C3=B3digo son exactamente iguales? En caso contrario, no pon=
+er
+c=C3=B3digos. Se dejan los mismos c=C3=B3digos siempre y cuando se respeten=
+ contenidos y
+carga horaria;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0=
+001pt;text-align:justify;line-height:normal;font-size:11pt;font-family:Cali=
+bri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">* Agregar
+en alg=C3=BAn lado contenido de =C3=A9tica profesional. Por ejemplo, hacer =
+un seminario
+obligatorio en el trabajo final;</span></p><p class=3D"MsoNormal" style=3D"=
+margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-size:11p=
+t;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt=
+">* Respecto al punto 5.7.6 hacer
+referencia a actividades suplementarias. Se podr=C3=ADa agregar algo recrea=
+tivo,
+divulgaci=C3=B3n de la matem=C3=A1tica. Ver tambi=C3=A9n Plan de Qu=C3=ADmi=
+ca;</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-=
+align:justify;line-height:normal;font-size:11pt;font-family:Calibri,&quot;s=
+ans-serif&quot;"><span style=3D"font-size:10pt">* El plan
+de transici=C3=B3n debe ser por separado (punto 5.7.7); Por las dudas, si a=
+lgo no
+funciona no hay que cambiar todo. Por ende, se hace un incidente del
+expediente. Ver el plan de Qu=C3=ADmica;</span></p><p class=3D"MsoNormal" s=
+tyle=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-=
+size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-s=
+ize:10pt">* Empezar a hacer un reglamento de trabajo final.</span></p><p cl=
+ass=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-=
+height:normal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><s=
+pan style=3D"font-size:10pt">=C2=A0</span></p><p class=3D"MsoNormal" style=
+=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-size=
+:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:=
+10pt">Saludos y buen finde</span></p><p class=3D"MsoNormal" style=3D"margin=
+:0cm 0cm 0.0001pt;text-align:justify;line-height:normal;font-size:11pt;font=
+-family:Calibri,&quot;sans-serif&quot;"><span style=3D"font-size:10pt">Fabi=
+=C3=A1n</span></p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 10pt;line-=
+height:115%;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><spa=
+n style=3D"font-size:10pt;line-height:115%">=C2=A0</span></p><p class=3D"Ms=
+oNormal" style=3D"margin:0cm 0cm 0.0001pt;text-align:justify;line-height:no=
+rmal;font-size:11pt;font-family:Calibri,&quot;sans-serif&quot;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 10pt;line-height:115%;fo=
+nt-size:11pt;font-family:Calibri,&quot;sans-serif&quot;"><span style=3D"fon=
+t-size:10pt;line-height:115%">=C2=A0</span></p></div><br><div class=3D"gmai=
+l_quote"><div dir=3D"ltr" class=3D"gmail_attr">El jue, 29 sept 2022 a las 1=
+3:42, Pao Moas (&lt;<a href=3D"mailto:paomoas@gmail.com">paomoas@gmail.com<=
+/a>&gt;) escribi=C3=B3:<br></div><blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex"><div dir=3D"auto"><div>Buenas tardes a tod@s. Ma=C3=B1ana no podr=
+=C3=A9 asistir a la reuni=C3=B3n con la SA. Confirmo asistencia para la reu=
+ni=C3=B3n de la CC el martes 11/10.=C2=A0</div><div dir=3D"auto"><br></div>=
+<div dir=3D"auto">Saludos,=C2=A0</div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Paola<br><br><div class=3D"gmail_quote" dir=3D"auto"><div dir=3D"=
+ltr" class=3D"gmail_attr">El jue., 29 sep. 2022 12:48, Fernando MAZZONE &lt=
+;<a href=3D"mailto:fmazzone@exa.unrc.edu.ar" target=3D"_blank">fmazzone@exa=
+.unrc.edu.ar</a>&gt; escribi=C3=B3:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex"><div dir=3D"ltr"><div>Hola compa=C3=B1eras/os,</div><di=
+v><br></div><div>Les confirmo que por indicaci=C3=B3n m=C3=A9dica=C2=A0 no =
+voy a ir a la reuni=C3=B3n con la secretaria. Recuerden que se desarrollar=
+=C3=A1 en la oficina de ella a las 14:30 horas. Ya le avis=C3=A9 que iban a=
+ ir otros integrantes de la CCP.</div><div>Buen finde<br></div><div>Fernand=
+o <br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"=
+gmail_attr">El mi=C3=A9, 28 sept 2022 a las 11:20, Fernando MAZZONE (&lt;<a=
+ href=3D"mailto:fmazzone@exa.unrc.edu.ar" rel=3D"noreferrer" target=3D"_bla=
+nk">fmazzone@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></div><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div>Buen d=C3=ADa. G=
+racias por responder. Aviso que estoy con un poco de congesti=C3=B3n y quiz=
+=C3=A1s no pueda ir el viernes. Les confirmo bien ma=C3=B1ana. Pero es impo=
+rtante que se haga la reuni=C3=B3n con la secretaria, as=C3=AD damos el pr=
+=C3=B3ximo paso.</div><div><br></div><div>Fernando<br></div><div><br></div>=
+<div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">El mi=C3=A9, 28 sept 2022 a las 11:13, Fabi=C3=A1n LEVIS (&=
+lt;<a href=3D"mailto:flevis@exa.unrc.edu.ar" rel=3D"noreferrer" target=3D"_=
+blank">flevis@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hola<div>Acuerdo con=
+ que la reuni=C3=B3n de la CCP sea el martes 11/10<br></div><div>Saludos</d=
+iv><div>Fabi=C3=A1n</div></div><br><div class=3D"gmail_quote"><div dir=3D"l=
+tr" class=3D"gmail_attr">El mi=C3=A9, 28 sept 2022 a las 11:08, Stefania DE=
+MARIA (&lt;<a href=3D"mailto:sdemaria@exa.unrc.edu.ar" rel=3D"noreferrer" t=
+arget=3D"_blank">sdemaria@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hola a t=
+odos! No puedo asistir en ese horario el viernes a la reuni=C3=B3n. Acuerdo=
+ con que la reuni=C3=B3n de la CC sea el martes 11/10. Gracias por comparti=
+r el escrito de Fabian. Saludos!=C2=A0</div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 28 sept 2022 a las 7:01,=
+ Marcelo RUIZ (&lt;<a href=3D"mailto:mruiz@exa.unrc.edu.ar" rel=3D"noreferr=
+er" target=3D"_blank">mruiz@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hola a=
+ todxs buenos d=C3=ADas.=C2=A0<div>Fernando bien, dejamos confirmada entonc=
+es como pr=C3=B3xima reuni=C3=B3n de la=C2=A0 CC para el=C2=A0 11/10.=C2=A0=
+</div><div>Abzo</div><div>M</div></div><br><div class=3D"gmail_quote"><div =
+dir=3D"ltr" class=3D"gmail_attr">El mar, 27 sept 2022 a las 14:14, Graciela=
+ GIUBERGIA (&lt;<a href=3D"mailto:ggiubergia@exa.unrc.edu.ar" rel=3D"norefe=
+rrer" target=3D"_blank">ggiubergia@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<=
+br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"=
+>De acuerdo. Saludos</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" c=
+lass=3D"gmail_attr">El mar, 27 sept 2022 a las 14:01, Fernando MAZZONE (&lt=
+;<a href=3D"mailto:fmazzone@exa.unrc.edu.ar" rel=3D"noreferrer" target=3D"_=
+blank">fmazzone@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
+olid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div>Hola nuevamen=
+te,</div><div><br></div><div>Marcelo, es verdad, la reuni=C3=B3n anterior f=
+ue el 30 de agosto, si nos ajustamos a lo que dijimos nos deber=C3=ADamos h=
+aber reunido el 13/9, 27/9 (hoy) y tocar=C3=ADa el 11/10.=C2=A0 <br></div><=
+div><br></div><div></div><div>No hay problema, no hay apuro. Mantengamos la=
+ previsibilidad=C2=A0 y convoquemonos para el martes 11/10.</div><div><br><=
+/div><div>Fernando<br></div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">El mar, 27 sept 2022 a las 13:15, Graciela GI=
+UBERGIA (&lt;<a href=3D"mailto:ggiubergia@exa.unrc.edu.ar" rel=3D"noreferre=
+r" target=3D"_blank">ggiubergia@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br>=
+</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;b=
+order-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"auto">H=
+ola a tod@s.=C2=A0<div dir=3D"auto">El viernes no podr=C3=A9 asistir a la r=
+euni=C3=B3n con Sec Acad=C3=A9mica,=C2=A0 pero el martes estar=C3=A9 en la =
+de CC.</div><div dir=3D"auto">saludos=C2=A0</div></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">El mar., 27 sept. 2022 12:=
+58, Marcelo RUIZ &lt;<a href=3D"mailto:mruiz@exa.unrc.edu.ar" rel=3D"norefe=
+rrer" target=3D"_blank">mruiz@exa.unrc.edu.ar</a>&gt; escribi=C3=B3:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr">Hola =
+Fernando, hola a tod@s.=C2=A0<div>1) El viernes estar=C3=A9 en la reuni=C3=
+=B3n.=C2=A0<br></div><div>2) Leer=C3=A9 con atenci=C3=B3n la propuesta de F=
+abi=C3=A1n</div><div>3) Respecto de la reuni=C3=B3n de la CC, tengo agendad=
+o (en t=C3=A9rminos de reuniones quincenales) el 11 de octubre. El 4 no pue=
+do,=C2=A0de todos modos si hubiese urgencia, acuerdo que la reuni=C3=B3n se=
+ realice el d=C3=ADa 4/10.=C2=A0</div><div>Abzo<br></div><div>M</div></div>=
+<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">El mar=
+, 27 sept 2022 a las 9:41, David FERREYRA (&lt;<a href=3D"mailto:deferreyra=
+@exa.unrc.edu.ar" rel=3D"noreferrer noreferrer" target=3D"_blank">deferreyr=
+a@exa.unrc.edu.ar</a>&gt;) escribi=C3=B3:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex"><div dir=3D"auto">Gracias Fernando. De acuerdo. C=
+onfirmo asistencia.=C2=A0<div dir=3D"auto"><br></div><div dir=3D"auto">Salu=
+dos=C2=A0</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">El mar, 27 de sep. de 2022 9:38 a.=C2=A0m., Fabi=C3=A1n LEV=
+IS &lt;<a href=3D"mailto:flevis@exa.unrc.edu.ar" rel=3D"noreferrer noreferr=
+er" target=3D"_blank">flevis@exa.unrc.edu.ar</a>&gt; escribi=C3=B3:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"auto">Hola =
+Fernando. Gracias por la informaci=C3=B3n. Confirmo asistencia para el vier=
+nes=C2=A0 30/9 con la Sec. Acad. y el martes 4/10 con la CCP.<div dir=3D"au=
+to">Saludos, Fabian=C2=A0</div></div><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr" class=3D"gmail_attr">El mar, 27 sept 2022 9:29, Fernando MAZZONE =
+&lt;<a href=3D"mailto:fmazzone@exa.unrc.edu.ar" rel=3D"noreferrer noreferre=
+r noreferrer noreferrer noreferrer" target=3D"_blank">fmazzone@exa.unrc.edu=
+.ar</a>&gt; escribi=C3=B3:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex"><div dir=3D"ltr"><div>Estimadas/os Compa=C3=B1eras/os,</div><div=
+><br></div><div>1)=C2=A0 El pr=C3=B3ximo viernes 30 a las 14:30 la Secrteta=
+ria Acad=C3=A9mica de la FCEFQyN nos convoca a una reuni=C3=B3n en su ofici=
+na para tratar el plan de estudios. Le confirm=C3=A9 la asistencia, cuantos=
+ m=C3=A1s puedan sumarse mejor.</div><div><br></div><div>=C2=A02) Fabian el=
+abor=C3=B3 un primer borrador del proyecto de difusi=C3=B3n de becas y pr=
+=C3=A1cticas de investigaci=C3=B3n. Se los envio adjunto.</div><div><br></d=
+iv><div>3) Me parece que es conveniente escuchar primero a la SA y luego re=
+unirnos, por ese motivo sugiero nos reunamos el pr=C3=B3ximo martes 4/10 a =
+la hora convenida para tratar el proyecto de difusi=C3=B3n y lo que surja d=
+e la reuni=C3=B3n con la SA.</div><div><br></div><div>Nos estamos viendo.</=
+div><div><br></div><div>Fernando<br></div><div><br></div><div><br></div><di=
+v><br></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><font face=3D"tahoma, sans-serif">Dr. Fabi=C3=A1n Eduardo=
+ Levis<br>Universidad Nacional de R=C3=ADo Cuarto<br>CONICET, FCEFQyN<br>De=
+partamento de Matem=C3=A1tica<br>Ruta Nacional 36 km. 601, R=C3=ADo Cuarto,=
+ X5804BYA, Argentina.<br>email: <a href=3D"mailto:flevis@exa.unrc.edu.ar" r=
+el=3D"noreferrer" target=3D"_blank">flevis@exa.unrc.edu.ar</a><br>Tel.: +54=
+ (358) 4767234</font></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div></div></div>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature"><div dir=3D"ltr"><font face=3D"tahoma, sans-seri=
+f">Dr. Fabi=C3=A1n Eduardo Levis<br>Universidad Nacional de R=C3=ADo Cuarto=
+<br>CONICET, FCEFQyN<br>Departamento de Matem=C3=A1tica<br>Ruta Nacional 36=
+ km. 601, R=C3=ADo Cuarto, X5804BYA, Argentina.<br>email: <a href=3D"mailto=
+:flevis@exa.unrc.edu.ar" target=3D"_blank">flevis@exa.unrc.edu.ar</a><br>Te=
+l.: +54 (358) 4767234</font></div></div>
+
+--000000000000834fac05e9ec2357--
