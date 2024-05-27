@@ -37,7 +37,7 @@
 		\draw [style=EjeColorFlecha1] (2) to (11);
 		\draw [style=EjeColorFlecha1] (5) to (9);
 		\draw [style=EjeColorFlecha1, bend right=15] (2) to (9);
-		\draw [style=EjeColorFlecha1] (7) to (13);
+		%\draw [style=EjeColorFlecha1] (7) to (13);
 		\draw [style=EjeColorFlecha1] (5) to (13);
 		\draw [style=EjeFlechaColor2, bend right=20] (4) to (13);
 		\draw [style=EjeColorFlecha1] (5) to (15);
