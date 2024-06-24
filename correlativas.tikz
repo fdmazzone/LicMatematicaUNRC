@@ -16,7 +16,7 @@
 		\node [style=new style 0] (19) at (1.25, -2.5)  {Fudamentos\\ de An\'alisis};
 		\node [style=new style 0] (21) at (-16.75, -12.75) {C\'alculo Num\'erico \\ Computacional};
 		\node [style=new style 0] (23) at (6.0, 0.5) {F\'isica};
-		\node [style=new style 0] (25) at (9.25, -5.5) {Variable\\ Compleja};
+		\node [style=new style 0] (25) at (9.25, -5.5) {Variables\\ Complejas};
 		\node [style=new style 0] (27) at (7.25, -11) {Topolog\'ia};
 		\node [style=new style 0] (29) at (13.75, -11.0) {Medida e\\ Integraci\'on};
 		\node [style=new style 0] (31) at (3, -8) {Ecuaciones\\ Diferenciales};
@@ -35,11 +35,12 @@
 		\draw [style=EjeColorFlecha1, bend left=20] (6) to (7);
 		\draw [style=EjeColorFlecha1, bend right=20]  (1) to (11);
 		\draw [style=EjeColorFlecha1] (2) to (11);
+		\draw [style=EjeColorFlecha1] (6) to (15);
 		\draw [style=EjeColorFlecha1] (5) to (9);
 		\draw [style=EjeColorFlecha1, bend right=15] (2) to (9);
-		\draw [style=EjeColorFlecha1] (7) to (13);
+		%\draw [style=EjeColorFlecha1] (7) to (13);
 		\draw [style=EjeColorFlecha1] (5) to (13);
-		\draw [style=EjeFlechaColor2, bend right=20] (4) to (13);
+		\draw [style=EjeColorFlecha1, bend right=20] (4) to (13);
 		\draw [style=EjeColorFlecha1] (5) to (15);
 		\draw [style=EjeFlechaColor2] (2) to (15);
 		\draw [style=EjeColorFlecha1] (13) to (17);
